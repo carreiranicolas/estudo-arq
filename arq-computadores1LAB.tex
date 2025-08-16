@@ -1,12 +1,15 @@
 \documentclass{report}
 
 % Pacotes para acentuação e formatação
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[brazil]{babel}
 \usepackage{setspace}    % Para espaçamento
 \usepackage{lipsum}      % Texto de exemplo (remova se não precisar)
 \usepackage{graphicx}
+
+
 
 
 \begin{document}
@@ -103,6 +106,27 @@
 	
 	\chapter{Cicuito real}
 	\section{O que é Arduíno?}
+	Arduino é uma plataforma para auxiliar com projetos de eletronica e programação. A ideia é que você tivesse uma coisa barata, funcional (que desse para instalar coisas de verdade) e que fosse fácil de aprender. Essa plataforma é quase todo baseado em uma plaquinha. Veja a foto abaixo:
+	
+	\begin{figure}[ht]
+		\centering
+		% ajusta a largura da imagem para ser quadrada (ex: 5cm x 5cm)
+		\includegraphics[width=8cm,height=5cm,keepaspectratio=false]{imagens/arduino.png}
+		
+		\caption{Arduino UNO R3}
+		
+	\end{figure}
+	
+	Essa plaquinha tem microcontroladores (a parte preta larga da placa que fica quase no meio) que funciona mais ou menos como um computadorzinho bem pequeno que é capaz de processar e armazenar coisas e também tem uma linguagem de programação, onde você consegue escrever coisas, criar sisteminhas que você coloca dentro e faz com que a placa te obedeça.
+	
+	E por que o arduino deu tão certo? Pois foi criado com a ideia de hardware livre. Qualquer um pode olhar como funciona seu circuito, comprar os componentes, montar seu próprio arduino e se quiser até vender seu próprio arduino. Isso faz com que o arduino seja barato, sendo assim usado amplamente em projetos, o que contribui para a disponibilização de vários materiais de arduino e com que várias pessoas possam ter contato com ele.
+	
+	Uma observação é que se pode utilizar o arduíno pela internet a partir do site TinkerCad. Se você comprar a placa, você precisa conectar ela via USB ao computador e baixar o softwere Arduino IDE, onde você bota o código que você vai fazer para enviar para a placa.
+	
+	Se você quiser ligar a placa sem o computador (isso acontece depois que você ja colocou o programa que voc~e fez nela), você conecta um adptador de bateria de 9V na placa por meio da entrada redonda e conecta o adaptador a bateria, aí você consegue ligar ela assim.
+	
+	
+	
 	\section{Principais componentes eletrônicos e ferramentas}
 	\section{Circuitos básicos (para entendimento)}
 
