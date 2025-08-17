@@ -123,11 +123,79 @@
 	
 	Uma observação é que se pode utilizar o arduíno pela internet a partir do site TinkerCad. Se você comprar a placa, você precisa conectar ela via USB ao computador e baixar o softwere Arduino IDE, onde você bota o código que você vai fazer para enviar para a placa.
 	
-	Se você quiser ligar a placa sem o computador (isso acontece depois que você ja colocou o programa que voc~e fez nela), você conecta um adptador de bateria de 9V na placa por meio da entrada redonda e conecta o adaptador a bateria, aí você consegue ligar ela assim.
+	Se você quiser ligar a placa sem o computador (isso acontece depois que você ja colocou o programa que voc~e fez nela), você conecta um adptador de bateria de 9V na placa por meio da entrada redonda e conecta o adaptador a bateria, aí você consegue ligar ela assim. Veja as duas entradas abaixo:
+	
+	\begin{figure}[ht]
+		\centering
+		% ajusta a largura da imagem para ser quadrada (ex: 5cm x 5cm)
+		\includegraphics[width=8cm,height=5cm,keepaspectratio=false]{imagens/entradas.png}
+		
+		\caption{Entrada USB e entrada redonda (da esquerda para a direita)}
+		
+	\end{figure}
+	
+	O arduíno ainda possui as portas de comunicação (circulado em vermelho na imagem abaixo), que serve para espetar os fios, componentes e até outras placas (é como se fosse aquela parte lateral do computador onde tem entradas usb e de rede, por exemplo). Veja:
+	
+	\begin{figure}[ht]
+		\centering
+		% ajusta a largura da imagem para ser quadrada (ex: 5cm x 5cm)
+		\includegraphics[width=8cm,height=5cm,keepaspectratio=false]{imagens/portas.png}
+		
+	\end{figure}
+	
+	
+	Essas conexões que podemos fazer ao espetar os componentes é chamada de PINOS, sendo que podemos ter pinos de entrada e de saída. Mas como funciona isso? Suponha que você queira instalar um sensor de presença no arduíno que quando alguém chega perto, você acende um LED. O sensor irá fornecer informações para o arduino, então você coloca ele na entrada. Os pinos de saída, você usará para acender o led, pois está saindo informações do arduíno (você que define os pinos de entrada e saída no código).
+	
+	Alguns desses pinos tem a sigla GND, o que significa que é o TERRA.
+	
+	Os pinos que ficam na parte "DIGITAL" são binários, só aceitam 0 e 1. Os pinos que ficam em ANALOG" são mais espertas e identificam valores intermediários.
+	
+	Na parte de POWER (que é a que a gente vai usar bastante nas aulas de lab) nós temos algumas indicações de Volts, o que significa que o arduino pode ser usado para alimentar componentes
 	
 	
 	
 	\section{Principais componentes eletrônicos e ferramentas}
+	
+	Aqui, falaremos sobre os principais componentes e ferramentas que são utilizados em projetos arduínos. 
+	É importante ressaltar que será dado apenas um panorama geral. 
+	Iremos aprofundar conforme formos estudando os sisteminhas. Vamos a eles:
+	
+	\begin{itemize}
+		\item Arduino Uno - uhwdudhhwdhhdwhudwhudwh jdjdjdjjdjdjdjdjdjdjjdjdjdjdjdjdj jsjsjsjsjsjsj \\ \\
+		\includegraphics[width=8cm]{imagens/arduino_desenho.png}
+		
+		\item Snap de bateria - \\
+		\includegraphics[width=8cm]{imagens/snap_bateria.png}
+		
+		\item Protoboard - \\ \\
+		\includegraphics[width=8cm]{imagens/protoboard.png}
+		
+		\item Capacitores - \\ \\
+		\includegraphics[width=8cm]{imagens/capacitores.png}
+		
+		\item Motor DC - \\ \\
+		\includegraphics[width=8cm]{imagens/motor_dc.png}
+		
+		\item Diodo - \\ \\
+		\includegraphics[width=8cm]{imagens/diodo.png}
+		
+		\item Fios de ligação - \\ \\
+		\includegraphics[width=8cm]{imagens/fios_ligacao.png}
+		
+		\item LEDs - \\ \\
+		\includegraphics[width=8cm]{imagens/leds.png}
+		
+		\item Botão - \\
+		\includegraphics[width=8cm]{imagens/botao.png}
+		
+		\item Resistores - \\ \\
+		\includegraphics[width=8cm]{imagens/resistores.png}
+		
+		\item USB –  \\ \\
+		\includegraphics[width=8cm]{imagens/usb.png}
+	\end{itemize}
+	
 	\section{Circuitos básicos (para entendimento)}
+
 
 \end{document}
