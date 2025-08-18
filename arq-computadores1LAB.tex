@@ -8,6 +8,8 @@
 \usepackage{setspace}    % Para espaçamento
 \usepackage{lipsum}      % Texto de exemplo (remova se não precisar)
 \usepackage{graphicx}
+\usepackage{listings}
+
 
 
 
@@ -161,41 +163,68 @@
 	Iremos aprofundar conforme formos estudando os sisteminhas. Vamos a eles:
 	
 	\begin{itemize}
-		\item Arduino Uno - uhwdudhhwdhhdwhudwhudwh jdjdjdjjdjdjdjdjdjdjjdjdjdjdjdjdj jsjsjsjsjsjsj \\ \\
+		\item Arduino Uno - É uma placa de desenvolvimento do microcontrolador que será o centro dos nossos projetos. É a peça central que orquestra e controla o funcionamento de todos os outros componentes.  \\ \\
 		\includegraphics[width=8cm]{imagens/arduino_desenho.png}
 		
-		\item Snap de bateria - \\
+		\item Snap de bateria -  É o cabo que serve para conectar uma bateria (geralmente de 9V) a um circuito, permitindo que a energia dela chegue aos componentes. (não veremos tanto por agora pois iremos conectar via usb direto no computador)\\ \\
 		\includegraphics[width=8cm]{imagens/snap_bateria.png}
 		
-		\item Protoboard - \\ \\
+		\item Protoboard - É uma placa com pequenos furos que permite montar circuitos eletrônicos temporariamente, sem precisar soldar nada. Você encaixa os componentes e os fios nos furos, e pode montar, desmontar e remontar o circuito quantas vezes quiser. Os furos são interligados internamente, formando "trilhos" que levam a energia de um ponto a outro. \\ \\
 		\includegraphics[width=8cm]{imagens/protoboard.png}
 		
-		\item Capacitores - \\ \\
+		\item Capacitores - Um capacitor armazena energia elétrica por um curto período de tempo e pode liberá-la rapidamente. Ele se enche de eletricidade e a libera para suavizar picos de energia, como se estivesse suavizando o fluxo da água. É usado para estabilizar a tensão e filtrar o sinal. \\ \\
 		\includegraphics[width=8cm]{imagens/capacitores.png}
 		
-		\item Motor DC - \\ \\
+		\item Motor DC - Um pequeno motor elétrico que converte energia elétrica em movimento (rotação). Por exemplo, em um carrinho de controle remoto, é ele quem faz as rodas se moverem. \\ \\
 		\includegraphics[width=8cm]{imagens/motor_dc.png}
 		
-		\item Diodo - \\ \\
+		\item Diodo - Permite que a corrente elétrica flua em apenas uma direção. Ele bloqueia o fluxo no sentido oposto.\\ \\
 		\includegraphics[width=8cm]{imagens/diodo.png}
 		
-		\item Fios de ligação - \\ \\
+		\item Fios de ligação - São os "cabos" que você usa para conectar os componentes na protoboard. Eles criam os caminhos para a eletricidade viajar de um componente para outro na protoboard. \\ \\
 		\includegraphics[width=8cm]{imagens/fios_ligacao.png}
 		
-		\item LEDs - \\ \\
+		\item LEDs - É basicamente uma lâmpada. Irá emitir luz quando a corrente elétrica passa por ela. \\ \\
 		\includegraphics[width=8cm]{imagens/leds.png}
 		
-		\item Botão - \\
+		\item Botão - Um tipo de interruptor que só funciona enquanto é pressionado. Quando você o solta, ele retorna à sua posição original, interrompendo o circuito. \\
 		\includegraphics[width=8cm]{imagens/botao.png}
 		
-		\item Resistores - \\ \\
+		\item Resistores - Ele controla e diminui o fluxo de eletricidade, como uma torneira que reduz a passagem da água. É essencial para proteger componentes como os LEDs de receberem muita corrente e queimarem.\\ \\
 		\includegraphics[width=8cm]{imagens/resistores.png}
 		
-		\item USB –  \\ \\
+		\item USB – É o cabo que conectaremos do computador para a nossa placa de arduíno para fornecer energia para ela e programar nela futuramente  \\ \\
 		\includegraphics[width=8cm]{imagens/usb.png}
 	\end{itemize}
 	
 	\section{Circuitos básicos (para entendimento)}
+	
+	\chapter{Programação com o Arduíno}
+	\section{Introdução}
+	
+	
+	Quando você escreve um código em arduíno, ele sempre segue a seguinte estrutura:
+	
+	
+	\begin{lstlisting}[language=C++]
+		void setup() {
+			// aqui ficam as configuracoes que rodam 1 vez so
+		}
+		
+		void loop() {
+			// aqui fica o programa que repete para sempre
+		}
+		
+	\end{lstlisting}
+	
+	\begin{itemize}
+		\item setup(): roda uma vez só, quando liga ou reseta o Arduino.
+		\item loop(): roda sem parar, em repetição infinita.
+	\end{itemize}
+	
+	Ou seja: tudo o que você escrever dentro de loop() vai repetir para sempre. Pensa como se o Arduino fosse uma caixinha que fica fazendo o mesmo ciclo sem nunca cansar.
 
+	\section{Pinos}
+	
 
 \end{document}
