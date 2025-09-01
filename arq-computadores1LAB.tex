@@ -158,8 +158,7 @@
 	
 	\section{Principais componentes eletrônicos e ferramentas}
 	
-	Aqui, falaremos sobre os principais componentes e ferramentas que são utilizados em projetos arduínos. 
-	É importante ressaltar que será dado apenas um panorama geral. 
+	Aqui, falaremos sobre os principais componentes e ferramentas que são utilizados em projetos arduínos. Os componentes eletronicos basicamente controlam os movimentos dos eletrons. É importante ressaltar que será dado apenas um panorama geral. 
 	Iremos aprofundar conforme formos estudando os sisteminhas. Vamos a eles:
 	
 	\begin{itemize}
@@ -169,32 +168,52 @@
 		\item Snap de bateria -  É o cabo que serve para conectar uma bateria (geralmente de 9V) a um circuito, permitindo que a energia dela chegue aos componentes. (não veremos tanto por agora pois iremos conectar via usb direto no computador)\\ \\
 		\includegraphics[width=8cm]{imagens/snap_bateria.png}
 		
-		\item Protoboard - É uma placa com pequenos furos que permite montar circuitos eletrônicos temporariamente, sem precisar soldar nada. Você encaixa os componentes e os fios nos furos, e pode montar, desmontar e remontar o circuito quantas vezes quiser. Os furos são interligados internamente, formando "trilhos" que levam a energia de um ponto a outro. \\ \\
+		\item Protoboard - É uma placa com pequenos furos que permite montar circuitos eletrônicos temporariamente, sem precisar soldar nada. Você encaixa os componentes e os fios nos furos, e pode montar, desmontar e remontar o circuito quantas vezes quiser. Os furos são interligados internamente, formando "trilhos" que levam a energia de um ponto a outro. A região do meio é divida em colunas verticais (isso com a placa deitada, como na imagem abaixo), ou seja, os 5 buraquinhos da coluna estão conectados. Na região das bordas os buraquinhos estão conectados de forma horizontal. \\ \\
 		\includegraphics[width=8cm]{imagens/protoboard.png}
 		
-		\item Capacitores - Um capacitor armazena energia elétrica por um curto período de tempo e pode liberá-la rapidamente. Ele se enche de eletricidade e a libera para suavizar picos de energia, como se estivesse suavizando o fluxo da água. É usado para estabilizar a tensão e filtrar o sinal. \\ \\
+		\item Capacitores - Um capacitor armazena energia elétrica por um curto período de tempo e pode liberá-la rapidamente. Ao usar capacitores, é importante ter atenção, pois eles são polarizados (tem o polo negativo e positivo) e se conectarmos os polos no lugar errado ele pode explodir. A perna do polo negativo é destacado com uma faixa. Existem os capacitores ceramicos (o da esquerda na imagem abaixo), eletroliticos (o do meio na imagem abaixo) e de poliester (o da direita na imagem abaixo).  \\ \\
 		\includegraphics[width=8cm]{imagens/capacitores.png}
 		
 		\item Motor DC - Um pequeno motor elétrico que converte energia elétrica em movimento (rotação). Por exemplo, em um carrinho de controle remoto, é ele quem faz as rodas se moverem. \\ \\
 		\includegraphics[width=8cm]{imagens/motor_dc.png}
 		
-		\item Diodo - Permite que a corrente elétrica flua em apenas uma direção. Ele bloqueia o fluxo no sentido oposto.\\ \\
+		\item Diodo - Permite que a corrente elétrica flua em apenas uma direção. Ele bloqueia o fluxo no sentido oposto. O lado negativo do diodo é destacado por uma faixa.\\ \\
 		\includegraphics[width=8cm]{imagens/diodo.png}
+		
+		\item Fotoresistor - É um componente que muda a sua resistencia conforme a quantidade de luz que é incidida sobre ele. Quanto mais luz, menos resistencia.\\ \\
+		\includegraphics[width=8cm]{imagens/fotoresistor.png}
+		
+		\item Servo Motor - É um tipo de motor giratório que só pode rotacionar em 180 graus. É controlado pelo envio de pulsos eletricos do Arduino. Esses impulsos informam ao motor para qual posição ele deve se mover\\ \\
+		\includegraphics[width=8cm]{imagens/servo_motor.png}
+		
+		\item Sensor de temperatura- Altera sua saída de tensão dependendo da temperatura do componente. As pernas externas conectam-se à alimentação e
+		ao aterramento. A tensão no pino central muda
+		conforme esquenta ou esfria. \\ \\
+		\includegraphics[width=8cm]{imagens/sensor_temperatura.png}
 		
 		\item Fios de ligação - São os "cabos" que você usa para conectar os componentes na protoboard. Eles criam os caminhos para a eletricidade viajar de um componente para outro na protoboard. \\ \\
 		\includegraphics[width=8cm]{imagens/fios_ligacao.png}
 		
-		\item LEDs - É basicamente uma lâmpada. Irá emitir luz quando a corrente elétrica passa por ela. \\ \\
+		\item LEDs - É basicamente uma lâmpada. Irá emitir luz quando a corrente elétrica passa por ela. Para identificar o polo positivo pode: identificar a perna mais comprida do LED; Usar o multimetro ou identificar a parte mais gordinha do plastico do LED \\ \\
 		\includegraphics[width=8cm]{imagens/leds.png}
+		
+		\item Transistor - Funciona como um interruptor eletronico, ou seja, conseguimos ligar e desligar coisas eletronicamente. Tem 3 pernas, onde duas delas servem para a corrente fluir (o coletor e o emissor) e a terceira faz o controle (é a base).   \\ \\
+		\includegraphics[width=8cm]{imagens/transistor.png}
 		
 		\item Botão - Um tipo de interruptor que só funciona enquanto é pressionado. Quando você o solta, ele retorna à sua posição original, interrompendo o circuito. \\
 		\includegraphics[width=8cm]{imagens/botao.png}
 		
-		\item Resistores - Ele controla e diminui o fluxo de eletricidade, como uma torneira que reduz a passagem da água. É essencial para proteger componentes como os LEDs de receberem muita corrente e queimarem.\\ \\
+		\item Resistores - Ele controla e diminui o fluxo de eletricidade, como uma torneira que reduz a passagem da água. É essencial para proteger componentes como os LEDs de receberem muita corrente e queimarem. Os resistores possuem faixas coloridas que servem para indicar quantos ohms tem o resistor (qual a resitencia dele). \\ \\
 		\includegraphics[width=8cm]{imagens/resistores.png}
+		
+		\item Potenciometros - É basicamente um resistor que você consegue variar a resistência. \\ \\
+		\includegraphics[width=8cm]{imagens/potenciometro.png}
 		
 		\item USB – É o cabo que conectaremos do computador para a nossa placa de arduíno para fornecer energia para ela e programar nela futuramente  \\ \\
 		\includegraphics[width=8cm]{imagens/usb.png}
+		
+		\item Multimetro - \\ \\
+		\includegraphics[width=8cm]{imagens/multimetro.png}
 	\end{itemize}
 	
 	\section{Circuitos básicos (para entendimento)}
@@ -206,25 +225,73 @@
 	Quando você escreve um código em arduíno, ele sempre segue a seguinte estrutura:
 	
 	
-	\begin{lstlisting}[language=C++]
-		void setup() {
-			// aqui ficam as configuracoes que rodam 1 vez so
-		}
+	\begin{center}
 		
-		void loop() {
-			// aqui fica o programa que repete para sempre
-		}
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}
+			
+					
+	void setup() {
 		
-	\end{lstlisting}
+		// aqui ficam as configuracoes que rodam 1 vez so
+	}
+				
+	void loop() {
+		// aqui fica o programa que repete para sempre
+	}
+	
+			
+		\end{lstlisting}
+	\end{center}
+	
+	
+
 	
 	\begin{itemize}
-		\item setup(): roda uma vez só, quando liga ou reseta o Arduino.
-		\item loop(): roda sem parar, em repetição infinita.
+		\item setup(): roda apenas uma vez quando a placa é ligada ou reiniciada. Usada para configurações iniciais (ex: definir pino como saída ou entrada).
+		\item loop(): roda continuamente em um ciclo infinito. É aqui que o Arduino executa o programa principal.
 	\end{itemize}
 	
-	Ou seja: tudo o que você escrever dentro de loop() vai repetir para sempre. Pensa como se o Arduino fosse uma caixinha que fica fazendo o mesmo ciclo sem nunca cansar.
+	Veja um exemplo a respeito disso:
+	
+		
+	\begin{center}
+		
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}
+			
+			
+	void setup() {
+		pinMode(13, OUTPUT); // Configura o pino 13 como saida
+	}
+
+	void loop() {
+		digitalWrite(13, HIGH); // Liga LED
+		delay(1000);            // Espera 1s
+		digitalWrite(13, LOW);  // Desliga LED
+		delay(1000);
+	}
+
+			
+			
+		\end{lstlisting}
+	\end{center}
+	
 
 	\section{Pinos}
+	
+	O Arduino UNO tem 14 pinos digitais e 6 pinos analogicos.
+	
+	Os pinos digitais vão de 0 a 13. Podem ser configurados como entrada (INPUT) ou saída (OUTPUT). Como saída → podem enviar sinais HIGH (5V) ou LOW (0V). Como entrada → podem ler se há tensão (HIGH = 1) ou não (LOW = 0) em um sensor ou botão.
+	\subsection{Escrita digital nos pinos I/O}
+	
+	Quando vamos lidar com pinos no nosso programa de arduino, temos alguns comandos que são sempre usados. São eles:
+	
+	\begin{itemize}
+		\item pinMode(pino, OUTPUT/INPUT): define se o pino será entrada ou saída.
+		\item digitalWrite(pino, HIGH/LOW): envia nível lógico (5V = HIGH ou 0V = LOW).
+		\item digitalRead(pino): lê nível lógico de entrada
+		\item analogRead().
+		\item analogWrite()
+	\end{itemize}
 	
 
 \end{document}
