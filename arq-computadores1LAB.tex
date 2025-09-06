@@ -9,6 +9,7 @@
 \usepackage{lipsum}      % Texto de exemplo (remova se não precisar)
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{hyperref}
 
 
 
@@ -203,7 +204,7 @@
 		\item Botão - Um tipo de interruptor que só funciona enquanto é pressionado. Quando você o solta, ele retorna à sua posição original, interrompendo o circuito. \\
 		\includegraphics[width=8cm]{imagens/botao.png}
 		
-		\item Resistores - Ele controla e diminui o fluxo de eletricidade, como uma torneira que reduz a passagem da água. É essencial para proteger componentes como os LEDs de receberem muita corrente e queimarem. Os resistores possuem faixas coloridas que servem para indicar quantos ohms tem o resistor (qual a resitencia dele). \\ \\
+		\item Resistores - Ele controla e diminui o fluxo de eletricidade, como uma torneira que reduz a passagem da água. É essencial para proteger componentes como os LEDs de receberem muita corrente e queimarem. Os resistores possuem faixas coloridas que servem para indicar quantos ohms tem o resistor (qual a resitencia dele). Inclusive: \href{https://resistorcolorcode.in/?gad_source=1}{site para você ver quantos ohms tem um resistor a partir de sua sequencia de cores.} \\ \\
 		\includegraphics[width=8cm]{imagens/resistores.png}
 		
 		\item Potenciometros - É basicamente um resistor que você consegue variar a resistência. \\ \\
@@ -278,20 +279,154 @@
 
 	\section{Pinos}
 	
-	O Arduino UNO tem 14 pinos digitais e 6 pinos analogicos.
+	Entender bem os pinos do Arduino é essencial porque eles são a forma de comunicação entre o microcontrolador e o mundo externo (sensores, LEDs, motores, etc.). O Arduino UNO tem 14 pinos digitais e 6 pinos analogicos. Veremos sobre eles a seguir.
+	\subsection{Pinos digitais (0 a 13)}
+	\begin{itemize}
+		\item Podem ser configurados como entrada (INPUT) ou saída (OUTPUT) com pinMode. Exemplo: pinMode(pino, OUTPUT/INPUT).
+		\item Como saída (OUTPUT) → podem enviar sinais HIGH (5V) ou LOW (0V). Exemplo: acender um LED → digitalWrite(13, HIGH);
+		\item  Como entrada (INPUT) → Podem ler se há tensão (HIGH = 1) ou não (LOW = 0) em um sensor ou botão. Exemplo: ler botão → int estado = digitalRead(2);
+	\end{itemize}
 	
-	Os pinos digitais vão de 0 a 13. Podem ser configurados como entrada (INPUT) ou saída (OUTPUT). Como saída → podem enviar sinais HIGH (5V) ou LOW (0V). Como entrada → podem ler se há tensão (HIGH = 1) ou não (LOW = 0) em um sensor ou botão.
-	\subsection{Escrita digital nos pinos I/O}
+	Uma observação é que os pinos 3, 5, 6, 9, 10 e 11 têm suporte a PWM (tem um “~” ao lado do número). Isso permite simular sinais analógicos (ex: controlar brilho de LED ou velocidade de motor).
 	
-	Quando vamos lidar com pinos no nosso programa de arduino, temos alguns comandos que são sempre usados. São eles:
+	\subsection{Pinos analógicos (A0 a A5)}
+	\begin{itemize}
+		\item Usados principalmente como entrada
+		\item Leem sinais analógicos (0 a 5V) e convertem para valores digitais de 0 a 1023 através do conversor ADC (10bits). Exemplo: analogRead(A0); → retorna algo entre 0 e 1023.
+		\item Muito usados com sensores que dão saída variável, como sensor de temperatura, LDR (fotoresistor), potenciômetro etc.
+		\item 
+	\end{itemize}
+	
+	\subsection{Pinos de alimentação}
+	\begin{itemize}
+		\item 5V → saída de 5V para alimentar sensores e módulos.
+		\item 3.3V → saída de 3.3V (para componentes que não suportam 5V).
+		\item 3.3V → saída de 3.3V (para componentes que não suportam 5V).
+		\item Vin → entrada de tensão quando você alimenta o Arduino com fonte externa (7 a 12V).
+	\end{itemize}
+	
+	\section{Programando no arduíno}
+	O arduíno utiliza basicamente a linguagem C, então muitas tópicos nós já sabemos, então vou passar de forma rapida em alguns deles.
+	\subsection{Variaveis}
+	\subsubsection{Conceito}
+	Como bem sabemos, variaveis são espaços alocados na memória onde armazenamos valores. No Arduino, você usa variáveis para armazenar dados que seu programa precisa, como a leitura de um sensor, o tempo de um atraso, o estado de um LED (ligado ou desligado), ou o valor de uma porta analógica.
+	
+	As variaveis como também sabemos, podem assumir um tipo e cada tipo de variável tem um tamanho específico (quantos bytes ela ocupa na memória) e um intervalo de valores que pode armazenar. Dessa forma, os principais tipos do arduino e a suas utilidades são:
 	
 	\begin{itemize}
-		\item pinMode(pino, OUTPUT/INPUT): define se o pino será entrada ou saída.
-		\item digitalWrite(pino, HIGH/LOW): envia nível lógico (5V = HIGH ou 0V = LOW).
-		\item digitalRead(pino): lê nível lógico de entrada
-		\item analogRead().
-		\item analogWrite()
+		\item int (inteiro): É o tipo mais comum. Armazena números inteiros, tanto positivos quanto negativos. É ideal para contadores ou para armazenar o número de um pino digital. Exemplo: int numeroDeCliques = 0;
+		\item float (ponto flutuante): Usado para números que têm casas decimais. É perfeito para leituras de sensores que fornecem valores fracionários, como temperatura ou umidade. Exemplo: float temperatura = 25.5;
+		\item boolean (booleano): Armazena apenas dois valores possíveis: true (verdadeiro) ou false (falso). É muito útil para armazenar o estado de algo, como "ligado" ou "desligado". Exemplo: boolean ledEstaLigado = false;
+		
+		
+		
 	\end{itemize}
+	\subsubsection{Declaração e atribuição}
+	
+	A sintaxe para declarar e atribuir valores a variaveis em arduino segue a mesma da linguagem C:
+	
+	\begin{center}
+		\begin{LARGE}
+			tipo nomeDaVariavel = valor;
+		\end{LARGE}
+	\end{center}
+	
+	Você pode declarar a variável e atribuir um valor depois, se preferir:
+	
+		\begin{center}
+		\begin{LARGE}
+			tipo nomeDaVariavel;
+			
+			nomeDaVariavel = valor;
+		\end{LARGE}
+	\end{center}
+	
+	\subsubsection{Exemplo}
+	
+	\subsection{Operadores}
+	Sabemos que os operadores são símbolos que realizam operações em valores e variáveis. Pense neles como as ferramentas básicas que você usa para fazer cálculos, comparar valores e manipular dados no seu código. No arduino os operadores são essenciais para quase tudo o que você faz em um programa, desde somar dois números até verificar se um sensor atingiu um certo valor. Falaremos então sobre cada tipo de operador
+	\subsubsection{Operador aritmético}
+	Esses são para operações matemáticas básicas.
+	
+	\begin{itemize}
+		\item (Adição): Soma dois valores. Exemplo: int soma = 5 + 3; (soma será 8).
+		\item (Subtração): Subtrai um valor do outro. Exemplo: int diferenca = 10 - 4; (diferença será 6).
+		\item (Multiplicação): Multiplica dois valores. Exemplo: int produto = 6 * 2; (produto será 12).
+		\item (Divisão): Divide um valor pelo outro. Exemplo: int quociente = 15 / 3; (quociente será 5).
+		\item (Módulo): Retorna o resto de uma divisão. É útil para verificar se um número é par ou ímpar. Exemplo: int resto = 7 porct 2; (resto será 1).
+		
+	\end{itemize}
+	
+	\subsubsection{Operador de atribuição}
+	Usados para atribuir um valor a uma variável.
+	
+	\begin{itemize}
+		\item = (Atribuição simples): Atribui o valor do lado direito à variável do lado esquerdo. Exemplo: int ledPin = 13;
+		\item Atribuições combinadas: Combinam uma operação com a atribuição, tornando o código mais curto.
+		\begin{itemize}
+			\item +=: Adição e atribuição. Exemplo: x += 5; é o mesmo que x = x + 5;
+			\item -= : Subtração e atribuição. Exemplo: x -= 2; é o mesmo que x = x - 2;
+			\item *=: Multiplicação e atribuição. Exemplo: x *= 3; é o mesmo que x = x * 3;
+			\item /=: Divisão e atribuição. Exemplo: x /= 4; é o mesmo que x = x / 4;
+		\end{itemize}
+	\end{itemize}
+	\subsubsection{Operador de comparação}
+	Usados para comparar dois valores. O resultado de uma comparação é sempre um valor booleano: true (verdadeiro) ou false (falso).
+	
+	\begin{itemize}
+		\item == (Igual a): Verifica se os valores são iguais. Atenção: use dois sinais de igual. Um único = é para atribuição. Exemplo: if (leitura == 100) { ... }
+		\item != (Diferente de): Verifica se os valores são diferentes. Exemplo: if (estadoBotao != HIGH) { ... }
+		\item > (Maior que): Exemplo: if (temperatura > 30) { ... }
+		\item < (Menor que): Exemplo: if (luz < 50) { ... }
+		\item >= (Maior ou igual a): Exemplo: if (contador >= 10) { ... }
+		\item <= (Menor ou igual a): Exemplo: if (tempo <= 500) { ... }
+		
+	\end{itemize}
+	\subsubsection{Operador lógico}
+	Usados para combinar ou inverter resultados de expressões lógicas (as que retornam true ou false, como comparações por exemplp).
+	
+	\begin{itemize}
+		\item \&\& (E lógico): Retorna true se ambas as condições forem verdadeiras. Exemplo: if (leitura > 100 \&\& leitura < 500) { ... }
+		\item || (Ou lógico): Retorna true se pelo menos uma das condições for verdadeira. Exemplo: if (pin13 == LOW || pin12 == LOW) { ... }
+		\item ! (Não lógico): Inverte o resultado. Se a condição for true, ele a torna false, e vice-versa. Exemplo: if (!sensorAtivo) { ... } (Isso é o mesmo que if (sensorAtivo == false) { ... }).
+	\end{itemize}
+	
+	
+	\subsubsection{Exemplos}
+	
+	\subsection{Operações condicionais}
+	Como sabemos, condicionais são estruturas de controle que permitem que o seu programa tome decisões. Elas verificam se uma ou mais condições são verdadeiras ou falsas e, com base nisso, executam um bloco de código específico. No Arduino, isso é fundamental para fazer seu projeto interagir com o ambiente, como acender um LED quando um botão é pressionado, ou ligar um motor quando a temperatura sobe.
+	
+	\subsubsection{if}
+	O if é a estrutura condicional mais básica e usada. Ela executa um bloco de código apenas se a condição for verdadeira. Sua sintaxe é:
+	
+	\begin{center}
+		
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}	
+			
+	if (condicao) {
+		codigo
+	}
+			
+			
+		\end{lstlisting}
+	\end{center}
+	
+	condicao: É uma expressão que retorna um valor booleano (true ou false). Geralmente, você usa os operadores de comparação (==, !=, <, >) aqui.
+	
+	\subsubsection{if..else}
+	
+	\subsubsection{if..else if..else}
+	
+	\subsection{Estruturas de repetição}
+	\subsection{Funções}
+	\subsection{Bibliotecas}
+	\subsection{Alguns exemplos}
+	
+	\section{Uso de sensores}
+
+	
+
 	
 
 \end{document}
