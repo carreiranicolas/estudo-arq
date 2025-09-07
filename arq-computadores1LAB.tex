@@ -412,18 +412,272 @@
 		\end{lstlisting}
 	\end{center}
 	
-	condicao: É uma expressão que retorna um valor booleano (true ou false). Geralmente, você usa os operadores de comparação (==, !=, <, >) aqui.
+	OBS: condicao é uma expressão que retorna um valor booleano (true ou false). Geralmente, você usa os operadores de comparação (==, !=, <, >) aqui.
 	
 	\subsubsection{if..else}
+	O if...else oferece uma alternativa: ele executa um bloco de código se a condição for verdadeira, e um bloco diferente se a condição for falsa. Sua sintaxe é:
+	
+	\begin{center}
+		
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}	
+			
+	if (condicao) {
+		codigo condicao verdadeira
+	} 
+	else {
+		codigo condicao falsa
+	}
+			
+		\end{lstlisting}
+	\end{center}
+	
+	
 	
 	\subsubsection{if..else if..else}
+	Essa estrutura é usada para testar múltiplas condições em sequência. A primeira condição que for verdadeira terá seu bloco de código executado, e o resto da estrutura será ignorado. Se nenhuma condição for verdadeira, o bloco else final será executado. Sua sintaxe é:
+	
+	\begin{center}
+		
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}	
+			
+	if (condicao1) {
+		Codigo se a condicaoo1 for verdadeira
+	} 
+	else if (condicao2) {
+		Codigo se a condicaoo2 for verdadeira (e a 1 for falsa)
+	} 
+	else {
+		Codigo se nenhuma das condicoes anteriores for verdadeira
+	}
+			
+		\end{lstlisting}
+	\end{center}
+	
+	\subsubsection{Switch..case}
+	
 	
 	\subsection{Estruturas de repetição}
+	Estruturas de repetição (ou "loops") são blocos de código que permitem executar um conjunto de instruções repetidamente, até que uma condição específica seja atendida. Elas são essenciais para automatizar tarefas que precisam ser feitas várias vezes, como ler um sensor continuamente, piscar um LED por um certo número de vezes, ou percorrer um array de dados.
+	
+	No Arduino, o próprio loop() principal é uma estrutura de repetição infinita que se executa indefinidamente, mas dentro dele, você pode usar outras estruturas para criar repetições mais controladas.
+	
+	\subsubsection{While}
+	O loop while executa um bloco de código enquanto uma condição for verdadeira. A condição é verificada antes de cada execução do bloco. Se a condição começar como falsa, o código dentro do while nunca será executado. Sua sintaxe é:
+	
+	\begin{center}
+		
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}	
+	while (condicao) {
+		
+		codigo a ser executado repetidamente
+	}
+		\end{lstlisting}
+	\end{center}
+	
+	Importante: Você deve garantir que algo dentro do loop mude a condição em algum momento, caso contrário, o loop se tornará infinito e travará o seu programa.
+	
+	\subsubsection{do..while}
+	O loop do...while é semelhante ao while, mas com uma diferença crucial: o código dentro do loop é executado pelo menos uma vez antes que a condição seja verificada. Sua sintaxe é
+	
+	\begin{center}
+		
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}	
+	do {
+		codigo a ser executado pelo menos uma vez
+	} while (condicao);
+		\end{lstlisting}
+	\end{center}
+	
+	\subsubsection{for}
+	O loop for é ideal quando você sabe exatamente quantas vezes a repetição precisa ocorrer. Ele é mais compacto e geralmente mais fácil de ler para repetições com um número fixo de vezes. Sua sintaxe é
+	
+	\begin{center}
+		
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}	
+	for (inicializacao; condicao; incremento) {
+		codigo a ser executado repetidamente
+	}
+		\end{lstlisting}
+	\end{center}
+	Onde:
+	
+	\begin{itemize}
+		\item inicializacao: Executada apenas uma vez, no início do loop. Geralmente é onde você declara e inicializa uma variável contadora.
+		\item condicao: Testada antes de cada iteração. Se for verdadeira, o loop continua. Se for falsa, o loop é encerrado.
+		\item incremento: Executado após cada iteração. Geralmente é onde você aumenta ou diminui a variável contadora.
+	\end{itemize}
+	
+	\subsection{Monitor serial}
+	\subsubsection{Conceito}
+	O Monitor Serial é uma ferramenta essencial na IDE (Ambiente de Desenvolvimento Integrado) do Arduino. Pense nele como uma "janela de comunicação" que permite que o seu computador e a placa Arduino troquem dados. Ele é usado principalmente para:
+	
+	\begin{itemize}
+		\item Depuração (Debugging): É a forma mais fácil de "ver" o que está acontecendo dentro do seu programa. Você pode imprimir o valor de variáveis, a leitura de sensores, ou mensagens de status para entender se o código está se comportando como esperado.
+		\item Visualizar Dados: Se o seu projeto estiver coletando dados (como temperatura, umidade, ou leituras de sensores de distância), você pode usar o Monitor Serial para ver esses valores em tempo real no seu computador.
+		\item Enviar Comandos: Você pode digitar comandos no Monitor Serial e enviá-los para o Arduino. Isso permite controlar seu projeto a partir do computador, como ligar e desligar um LED digitando "ligar" ou "desligar".
+	\end{itemize}
+	
+	Ou seja, o Serial do Arduino é como o terminal em um programa de linha de comando (CLI) que nós fazemos em em C, por exemplo.
+	
+	
+	\subsubsection{Como usar?}
+	Para usar o Monitor Serial, você precisa de duas coisas:
+	
+	\begin{enumerate}
+		\item Configurar a comunicação serial no seu código.
+		\item Abrir a janela do Monitor Serial na IDE do Arduino.
+	\end{enumerate}
+	
+	\begin{large}
+		\textbf{Passo 1: Configurando o Código}
+		\\
+	\end{large}
+	
+	Você precisa de apenas duas linhas de código para começar a usar o Monitor Serial.
+	
+	\begin{itemize}
+		\item Serial.begin(velocidade);
+		\begin{itemize}
+			\item Esta linha é colocada no bloco setup().
+			\item Ela inicializa a comunicação serial.
+			\item velocidade é a taxa de transmissão de dados em bits por segundo (baud rate). O valor mais comum é 9600, mas é crucial que a velocidade configurada no código seja a mesma que a escolhida no Monitor Serial.
+		\end{itemize}
+		\item Serial.print(); e Serial.println();
+		
+		\begin{itemize}
+			\item Estas linhas são usadas para enviar dados do Arduino para o computador.
+			\item Serial.print() imprime o dado e mantém o cursor na mesma linha.
+			\item Serial.println() imprime o dado e move o cursor para a próxima linha, o que é ótimo para exibir cada informação em uma nova linha.
+			\item Você pode imprimir texto, números, o valor de variáveis, etc., dentro dos parênteses.
+			
+		\end{itemize}
+	\end{itemize}
+	
+	\begin{large}
+		\textbf{Passo 2: Abrindo e usando a janela}
+		\\
+	\end{large}
+	
+	Depois de carregar o código na placa, siga estes passos:
+	
+	\begin{enumerate}
+		\item Clique no ícone de lupa no canto superior direito da IDE do Arduino, ou use o atalho Ctrl + Shift + M.
+		\item Uma nova janela se abrirá.
+		\item No canto inferior direito, você verá um menu suspenso para a taxa de transmissão. Certifique-se de que ele esteja definido para o mesmo valor que você usou no Serial.begin() (neste caso, 9600).
+		\item O Monitor Serial começará a exibir a mensagem e os valores que o seu código está enviando.
+	\end{enumerate}
+	
+	\begin{large}
+		\textbf{Dicas e considerações importantes}
+		\\
+	\end{large}
+	\begin{itemize}
+		\item Taxa de Transmissão (Baud Rate): Se a velocidade do código e a do Monitor Serial não coincidirem, você verá caracteres estranhos ou lixo eletrônico.
+		\item Apenas Texto: O Monitor Serial não exibe gráficos ou imagens. Ele é feito para comunicação em texto.
+		\item Alternativas: Existem ferramentas mais avançadas, como o Serial Plotter na IDE do Arduino, que transformam dados numéricos em gráficos, o que é excelente para visualizar leituras de sensores ao longo do tempo. Você pode acessá-lo no menu Ferramentas > Serial Plotter.
+	\end{itemize}
+	\subsubsection{Exemplo}
 	\subsection{Funções}
+	\subsubsection{Conceito}
+	Funções são blocos de código que executam uma tarefa específica e podem ser chamados a qualquer momento no seu programa. Elas ajudam a organizar o código, torná-lo mais legível, reutilizável e fácil de dar manutenção.
+	
+	Pense em uma função como uma "caixa" que recebe uma ou mais informações (chamadas de parâmetros), faz um trabalho com elas e, opcionalmente, retorna um resultado. Existem dois tipos principais de funções:
+	
+	
+	
+	\begin{enumerate}
+		\item Funções nativas: Aquelas que já vêm com a linguagem do Arduino, como digitalWrite(), analogRead(), delay(), etc.
+		\item Funções personalizadas: Aquelas que você cria para o seu próprio projeto.
+	\end{enumerate}
+	\subsubsection{Por que usar}
+	Usamos funções no arduino (e de modo geral) porque:
+	
+	\begin{itemize}
+		\item Organização: Quebra um programa grande em partes menores e mais fáceis de entender.
+		\item Reutilização: Se você precisa piscar um LED em diferentes partes do seu código, você pode criar uma função piscarLed() e chamá-la quantas vezes quiser, em vez de repetir as mesmas linhas de código.
+		\item Legibilidade: Dar um nome descritivo a uma função (lerTemperatura()) torna o código mais claro do que ter um monte de linhas misturadas.
+	\end{itemize}
+	
+	\subsubsection{Como criar}
+	Para criar uma função, sua sintaxe é:
+	
+	\begin{center}
+		
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}	
+	tipoDeRetorno nomeDaFuncao(parametro1, parametro2, ...) {
+		
+		codigo que a funcao executa
+		return valor; --> se retornar algo
+	}
+		\end{lstlisting}
+	\end{center}
+	
+	Onde:
+	
+	\begin{itemize}
+		\item tipoDeRetorno: Define o tipo de dado que a função vai retornar (ex: int, float, boolean). Se a função não retornar nada, use void.
+		\item nomeDaFuncao: Um nome claro e descritivo para a função.
+		\item parametros: Uma lista de variáveis que a função espera receber. São opcionais.
+		\item return: O comando para enviar um valor de volta para onde a função foi chamada. Só é usado se o tipoDeRetorno não for void.
+	\end{itemize}
+	
+	Um detalhe é que as funções que criamos ficam acima da parte de void setup()
+	
+	\subsubsection{Exemplo}
 	\subsection{Bibliotecas}
+	Bibliotecas são coleções de código pré-escrito que estendem as funcionalidades do seu Arduino. Elas contêm funções e classes prontas para uso, permitindo que você adicione recursos complexos ao seu projeto sem ter que escrever todo o código do zero.
+	
+	
 	\subsection{Alguns exemplos}
 	
-	\section{Uso de sensores}
+	\section{Uso de sensores e Saídas Analógicas}
+	\subsection{LED RGB e Fotoresistores}
+	\subsubsection{Uso do LED RGB}
+	Um LED RGB é um único componente que contém três LEDs separados: um vermelho (R), um verde (G) e um azul (B). Veja a imagem abaixo:
+	
+	\begin{figure}[ht]
+		\centering
+		% ajusta a largura da imagem para ser quadrada (ex: 5cm x 5cm)
+		\includegraphics[width=8cm,height=5cm,keepaspectratio=false]{imagens/led_rgb.png}
+		
+		
+	\end{figure}
+	
+	
+	
+	Ao controlar a intensidade de cada uma dessas cores primárias, você pode misturá-las para criar uma gama enorme de cores. O controle da intensidade é feito usando a técnica de PWM (Modulação por Largura de Pulso, que falaremos em breve) em cada pino de cor.
+	
+	\subsubsection{Uso de fotorresistores}
+	Um fotoresistor, também chamado de LDR (Light-Dependent Resistor), é um tipo de sensor que muda sua resistência de acordo com a quantidade de luz que incide sobre ele. 
+	
+	\subsection{ Modulação por Largura de Pulso (PWM)}
+	\subsubsection{PWM}
+	 É uma técnica usada para simular saídas analógicas a partir de saídas digitais. O Arduino não consegue fornecer uma voltagem variável (ele só fornece 0V ou 5V), mas com o PWM ele pode ligar e desligar a saída muito rapidamente. O olho humano percebe esse "pisca-pisca" rápido como se a luminosidade fosse menor.
+	 \subsubsection{Ciclo de trabalho (Duty cicle)}
+	 É a porcentagem de tempo em que o sinal PWM fica em nível alto (HIGH).
+	 \begin{itemize}
+	 	\item Um ciclo de trabalho de 0\% significa que o sinal está sempre em LOW, e o LED fica apagado.
+	 	\item Um ciclo de trabalho de 50\% significa que o sinal fica em HIGH por metade do tempo e em LOW pela outra metade, o que resulta em um brilho médio para o LED.
+	 	\item Um ciclo de trabalho de 100\% significa que o sinal está sempre em HIGH, e o LED fica com o brilho máximo.
+	 \end{itemize}
+	\subsection{Funções analogRead() e analogWrite()}
+	Já chegamos a falar um pouco dessas funções anteriormente, mas vamos revê-las porque será importante neste momento:
+	
+	\begin{itemize}
+		\item analogRead(pino): Lê o valor de uma porta analógica (de A0 a A5) e retorna um número inteiro de 0 a 1023. Esse valor é proporcional à voltagem lida (0 = 0V, 1023 = 5V). É a função usada para ler dados de sensores como o fotoresistor
+		\item analogWrite(pino, valor): Escreve um valor PWM em uma porta digital que suporte essa função (normalmente identificadas com um \~). O valor pode ser um número de 0 a 255.
+		\begin{itemize}
+			\item analogWrite(pino, 0) equivale a um ciclo de trabalho de 0\%, deixando o LED apagado.
+			\item analogWrite(pino, 127) equivale a um ciclo de trabalho de 50\%, deixando o LED com brilho médio.
+			\item analogWrite(pino, 255) equivale a um ciclo de trabalho de 100\%, deixando o LED com brilho máximo.
+			
+		\end{itemize}
+	\end{itemize}
+	
+	
+	
+	 
+	
 
 	
 
