@@ -213,11 +213,12 @@
 		\item USB – É o cabo que conectaremos do computador para a nossa placa de arduíno para fornecer energia para ela e programar nela futuramente  \\ \\
 		\includegraphics[width=8cm]{imagens/usb.png}
 		
-		\item Multimetro - \\ \\
-		\includegraphics[width=8cm]{imagens/multimetro.png}
+		\item Multimetro - É um instrumento que serve para medirmos quantos volts, qual a resistencia, se aquilo conduz energia elétrica ou não e dentre outros. Temos no multimetro dois fios, que são as pontas de prova. O preto colocamos no terra do multimetro (buraco do centro) e o vermelho, na esquerda colocamos para medir corrente (vai até 10 amperes, mais que isso ele estraga) e do lado direito volts, micro amperes e ohms, então vamos usar bem mais o lado direito. No centro do multímetro temos a chave seletora que giramos para escolher o que queremos medir. As três medidas básicas são: Volts (fica na primeira faixa cinza à direita), os Amperes (fica na faixa cinza a esquerda, debaixo da azul) e a Resistencia medida em Ohms (é a faixa onde tem o símbolo de Omega). A faixa cinza da direita serve para medir corrente alternada (para medir energia da tomada) e a faixa azul da esquerda serve para medir corrente continua (pilha, bateria e etc). O símbolo reverso  ao OFF mostra se o material está conduzindo ou não energia. Nas faixas, nós teremos os números, que significa o máximo que ele pode medir (exemplo: na faixa azul da esquerda, se colocamos no 20, significa que pode medir no maximo 20 volts)\\ \\
+		\includegraphics[width=6cm]{imagens/multimetro.png}
 	\end{itemize}
 	
 	\section{Circuitos básicos (para entendimento)}
+	\subsection{LED controlado por um botão}
 	
 	\chapter{Programação com o Arduíno}
 	\section{Introdução}
@@ -287,14 +288,14 @@
 		\item  Como entrada (INPUT) → Podem ler se há tensão (HIGH = 1) ou não (LOW = 0) em um sensor ou botão. Exemplo: ler botão → int estado = digitalRead(2);
 	\end{itemize}
 	
-	Uma observação é que os pinos 3, 5, 6, 9, 10 e 11 têm suporte a PWM (tem um “~” ao lado do número). Isso permite simular sinais analógicos (ex: controlar brilho de LED ou velocidade de motor).
+	Uma observação é que os pinos 3, 5, 6, 9, 10 e 11 têm suporte a PWM (tem um "~" ao lado do número). Isso permite simular sinais analógicos (ex: controlar brilho de LED ou velocidade de motor).
 	
 	\subsection{Pinos analógicos (A0 a A5)}
 	\begin{itemize}
 		\item Usados principalmente como entrada
 		\item Leem sinais analógicos (0 a 5V) e convertem para valores digitais de 0 a 1023 através do conversor ADC (10bits). Exemplo: analogRead(A0); → retorna algo entre 0 e 1023.
 		\item Muito usados com sensores que dão saída variável, como sensor de temperatura, LDR (fotoresistor), potenciômetro etc.
-		\item 
+	
 	\end{itemize}
 	
 	\subsection{Pinos de alimentação}
@@ -623,9 +624,57 @@
 	
 	Um detalhe é que as funções que criamos ficam acima da parte de void setup()
 	
+	\subsubsection{A função map()}
+	A map() re-mapeia um número de uma faixa para outra.
+	
+	\begin{center}
+		
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}
+novaVariavel = map(valor, deMin, deMax, paraMin, paraMax);
+			
+		\end{lstlisting}
+	\end{center}
+	
+	Onde:
+	
+	\begin{itemize}
+		\item valor: a variável que contém o número a ser mapeado (ex: a leitura do potenciômetro).
+		\item deMin: o limite inferior da faixa original (ex: 0).
+		\item deMax: o limite superior da faixa original (ex: 1023).
+		\item paraMin: o limite inferior da faixa de destino (ex: 0).
+		\item paraMax: o limite superior da faixa de destino (ex: 180).
+	\end{itemize}
+	
+	
+	
 	\subsubsection{Exemplo}
 	\subsection{Bibliotecas}
 	Bibliotecas são coleções de código pré-escrito que estendem as funcionalidades do seu Arduino. Elas contêm funções e classes prontas para uso, permitindo que você adicione recursos complexos ao seu projeto sem ter que escrever todo o código do zero.
+	\subsubsection{Como usar uma biblioteca}
+	\begin{itemize}
+		\item Incluir a Biblioteca: No inicio do seu código (sketch), você deve incluir a biblioteca com a diretiva \#include. Exemplo:
+		
+		
+	\end{itemize}
+	
+	\begin{center}
+		
+		\begin{lstlisting}{caption=casting explicito em C, language=C, label=clanguage}
+		#include <Servo.h>	
+
+		\end{lstlisting}
+	\end{center}
+	
+	
+	\begin{itemize}
+		\item Utilizar suas Funções: Após a inclusão, você pode usar as classes e funções que a biblioteca oferece.
+		
+		
+	\end{itemize}
+	
+	O Arduino IDE já vem com várias bibliotecas pré-instaladas (como a Servo.h), e você pode facilmente adicionar outras através do "Gerenciador de Bibliotecas" (Ferramentas > Gerenciar Bibliotecas).
+	
+	
 	
 	
 	\subsection{Alguns exemplos}
@@ -673,6 +722,33 @@
 			
 		\end{itemize}
 	\end{itemize}
+	
+	\subsection{Sobre servos motores}
+	
+	Já vimos superficialmente acerca do conceito de servos motores, mas revisando: Um servo motor é um tipo especial de motor que permite controlar a posição angular do seu eixo com grande precisão. Diferente de um motor comum que gira continuamente, um servo motor pode ser instruído a mover-se para uma posição específica (um ângulo) e a manter-se firme nela.
+	
+	\subsubsection{Como funciona}
+	
+	\subsection{Capacitor de desacoplamento}
+	
+	Um capacitor de desacoplamento (ou decoupling capacitor) é um capacitor usado para proteger um componente ou circuito dos ruídos e flutuações da fonte de alimentação. Ele não é um tipo diferente de capacitor, mas sim uma função que um capacitor exerce.
+	
+	\subsubsection{Com funciona}
+	
+	Motores e circuitos digitais podem causar quedas repentinas e breves de tensão ao serem ligados ou ao mudarem de estado rapidamente. O capacitor de desacoplamento, posicionado o mais perto possível dos pinos de alimentação do componente que ele protege (por exemplo, um servo motor), atua como um pequeno reservatório local de energia.
+	
+	Quando ocorre uma queda de tensão na linha de alimentação principal, o capacitor instantaneamente fornece a energia que armazenou, "desacoplando" o componente das instabilidades da fonte. Geralmente, um capacitor eletrolítico de 100µF a 470µF é colocado entre os pinos de VCC e GND do servo motor para essa finalidade.
+	
+	\subsection{Potenciometro}
+	
+	Um potenciômetro é um resistor variável com três terminais. Ele funciona como um divisor de tensão, permitindo que você controle manualmente a voltagem de saída girando um eixo ou deslizando um cursor.
+	
+	
+
+	
+	
+	
+	
 	
 	
 	
