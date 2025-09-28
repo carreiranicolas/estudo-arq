@@ -87,9 +87,276 @@
 	\chapter{Introdução}
 	\section{Acerca da história}
 	
-	\section{Discussão sobre performance}
+	Ao longo da história, nós tivemos algumas revoluções:
+	
+	\begin{itemize}
+		\item Revolução agricola: O homem aprendeu a plantar
+		\item Revolução industrial: Surgiram os trabalhos remunerados em grande escala
+		\item Revolução da computação/informação: É a revolução que estamos tendo hoje. A partir dela:
+		\begin{itemize}
+			\item Conhecemos o DNA humano e de outras especies base por base (por conta do surgimento de grandes bancos de dados e aumento de poder computacional)
+			\item Surgimento de carros autonomos
+			\item Surgimento dos celulares
+			\item Surgimento da internet
+			\item Surgimento dos buscadores (google..)
+		\end{itemize}
+	\end{itemize}
+	
+	E no futuro? Bom não sabemos, mas uma coisa é certa. As evoluções que foram possíveis dentro da computação graças ao aumento do poder de processamento dos processadores e é o que vamos ver na próxima seção
+	
+	\section{Lei de moore, computadores e performance}
+	
+	\subsection{A lei de moore e algumas pills}
+	
+	Segundo a lei de Moore, o poder de processamento aumentava em 2x a cada dois anos, mantendo o custo.
+	
+	\begin{center}
+		
+		\includegraphics[width=14cm,height=5cm,keepaspectratio=false]{imagens-teoria/moore.png}
+		
+	\end{center}
+	
+	
+	Foi esse aumento do poder de processamento que como dissémos na seção anterior, possibilitou essa grande evolução dentro da computação. No entanto, essa lei por muito tempo também salvou os programadores ruins, uma vez que seu programa poderia ser muito ruim, que a cada dois anos ele iria rodar mais rápido.
+	
+	A lei de Moore foi possibilitada graças a miniaturização dos transistors. Algo engraçado é que nos dias de hoje os transistors estão na faixa dos 7 nanometros e essa é a barreira fisica que chegamos, ou seja, não conseguimos mais diminui-los. Chegamos a essa barreira em 2018.
+	
+	Isso, logicamente, causou um panico nos programadores ruins, pois ou ele faz um código bem otimizado ou ele terá que aprender a fazer programação em paralelo (até mesmo os bons programadores precisam aprender programação em paralelo)
+	
+	\subsection{As classes de computadores}
+	
+	Os computadores podem ser diferenciados em algumas classes. Elas são: Computadores pessoais, servidores, super computadores e sistemas embarcados. Vamos ver algumas informações sobre eles: 
+	
+	\begin{itemize}
+		\item Computadores pessoais: São computadores de uso geral (destinado a varias atividades) e são baseados em um equilibrio entre custo e performance
+	\end{itemize}
+	
+	\begin{center}
+		
+		\includegraphics[width=8cm,height=5cm,keepaspectratio=false]{imagens-teoria/comp_geral.png}
+		
+	\end{center}
+	
+	\begin{itemize}
+		\item Servidores: São computadores usados para acesso em rede. Eles possuem alta capacidade, alta performance e alta confiabilidade
+	\end{itemize}
+	
+	\begin{itemize}
+		\item Supercomputadores: São computadores que possuem aplicações cientificas e de engenharia de alta complexidade
+	\end{itemize}
+	
+	\begin{itemize}
+		\item Sistemas embarcados: Ficam dentro de dispositivos de hardware. São limitados. A ideia é fazer uma coisa só e bem feita, sem errar.
+	\end{itemize}
+	
+	Agora uma curiosidade é que o maior número de computadores no mundo são sistemas embarcados. A ideia da disciplina de arquitetura de computadores além de falar sobre a arquitetura dos computadores é trabalhar com sistemas embarcados justamente pelo motivo deles se fazerem extremamente presente
+	
+	
+	\subsection{A perfomance}
+	Sabemos que a perfomance dependerá do hardware de da própria aplicação, uma vez que:
+	
+	\begin{itemize}
+		\item Depende do algoritmo (Big-O)
+		\item Depende da Linguagem de programação (sistemas de alta performance devem ser escritos em C e C++)
+		\item Depende de Sistema de entrada e saída do computador
+		\item Depende de processador e memória, que determinam o quão rápido instruções podem ser executadas 
+	\end{itemize}
+	
+	\subsection{As 7 grandes ideias}
+	A evolução da computação pode ser resumida em 7 grandes ideias. Sao elas:
+	
+	\begin{enumerate}
+		\item Abstrações: Humanidade criou diversas abstrações, uma vez que o computador é apenas a passagem de energia. Bits são apenas abstrações, nós falamos que tem 0 e 1 no HD, mas o que tem é um campo magnético voltado para cima e para baixo
+		\item Performance do caso comum:
+		\item Performance do paralelismo
+		\item Performance do pipelining
+		\item Performance por predição:
+		\item Hierarquia de memorias
+		\item Confiança por redundancia
+	\end{enumerate}
+	
+	
+	Existia uma oitava ideia, que era a lei de Moore, mas sabemos que ela morreu pelos motivos que falamos na seção "A lei de moore e algumas pills"
+	
+	
 	\section{Falando sobre software}
-	\section{Arquitetura de von neumann}
+	
+	Quando falamos sobre software, na verdade, podemos estar nos referindo a diferentes tipos de software
+	
+	\begin{itemize}
+		\item Software aplicativo: Aquilo que fazemos (Hello World e etc)
+		\item Software de sistema: Operacional e compilador. Fornecem
+	\end{itemize}
+	
+	\section{Alto nível para Linguagem de maquina}
+	
+	Quando olhamos a imagem abaixo, podemos dizer o que esse conjunto do bits representa?
+	
+	\begin{center}
+		
+		\includegraphics[width=10cm,height=3cm,keepaspectratio=false]{imagens-teoria/os_bits.png}
+		
+	\end{center}
+	
+	A resposta é NÃO, pois esse conjunto de bits pode representar várias coisas como números e até mesmo uma instrução, por exemplo.
+	
+	Uma instrução é um código binário que diz a CPU o que ela deve fazer, como somar um número, por exemplo.
+	
+	Isso acontece porque TODOS os computadores utilizam a Arquitetura de Von Neumann (veremos ela em detalhes posteriormente)
+
+	\begin{center}
+		
+		\includegraphics[width=11cm,height=4cm,keepaspectratio=false]{imagens-teoria/von-neumann.jpeg}
+		
+	\end{center}
+
+
+	A arquitetura de Von Neumann faz com que a CPU converse com uma e apenas uma memória (a memória RAM) e assim, use a mesma representação (códigos binários) para dados (numeros, caracteres e etc) e instruções.
+	
+	Anteriormente, a arquitetura usada era a Havard, onde os dados e instruções ficavam em memórias separadas. Veja a baixo:
+	
+	\begin{center}
+		
+		\includegraphics[width=9cm,height=4cm,keepaspectratio=false]{imagens-teoria/havard.png}
+		
+	\end{center}
+	
+	Inclusive, uma observação que é importante de ser feita é que o arduino utiliza a arquitetura de Havard, sendo que existe a memória Flash no arduíno, que é a memória que armazena as instruções.
+	
+	\subsection{O programa e a maquina}
+	
+	Sabendo que o computador funciona em binário para tudo (instruções e dados), quando escrevemos nosso programa, ele precisa ir para o binário para que o computador possa entende-lo. Com isso nós temos algumas etapas:
+	
+	\begin{itemize}
+		
+		\item Linguagem de alto nível: A linguagem de alto nível será a linguagem que utilizamos em um geral, são aquelas que podemos compreender com facilidade (vamos utilizar o C para nossa explicação). Uma coisa importantissima nessa camada é o compilador, pois ele irá ler a linguagem e gerar o Assembly correspondente.
+	\end{itemize}
+	
+	\begin{itemize}
+		\item Assembly: O Assembly é uma camada meio que intemediária (pois abaixo dele ainda temos o assembler) e é ele irá fazer a ligação entre o software e o hardware. O assembly é uma linguagem formada pelas representações simbólicas das instruções. Essas representações simbólicas são palavras chave que a CPU entende (add, ld, sd). Uma curiosidade é que não podemos rodar um programa compilado em Intel para MAC, pois as palavras chaves do assembly são diferentes nas duas arquiteturas
+		
+		\begin{center}
+			
+			\includegraphics[width=6cm,height=3cm,keepaspectratio=false]{imagens-teoria/assembly.png}
+			
+		\end{center}
+		
+		Os compiladores possibilitaram nós de não precisarmos saber assembly de cada arquitetura. Isso acontece porque quando escrevemos nosso programa no alto nível, o compilador sabe o assembly de cada arquitetura.
+	\end{itemize}
+	
+	\begin{itemize}
+		\item Assembler: É a última camada. Ele lê as instruções Assembly e passa para binário para que o computador entenda.
+		
+		\begin{center}
+			
+			\includegraphics[width=7cm,height=2cm,keepaspectratio=false]{imagens-teoria/assembler.png}
+			
+		\end{center}
+	\end{itemize}
+	
+	Entendido isso quando nós fazemos um Hello, World qualquer, nós temos:
+	
+	Codigo - Ola.c - Pre-processamento (Ola.i) - Assembly - Assembler
+	
+	\chapter{Parte 2}
+	
+	\section{Por debaixo dos panos}
+	
+	Algo que precisamos falar é: O que faz um computador ser um computador? Para ser um computador precisamos de: Input, Output, Memoria, Controle e Datapath. São esses componentes que definem o que chamamos de computador.
+	
+	\begin{center}
+		
+		\includegraphics[width=12cm,height=10cm,keepaspectratio=false]{imagens-teoria/comp.png}
+		
+	\end{center}
+	
+	\begin{itemize}
+		\item Datapath: Componente do processador que realiza operações aritméticas; circuitos para mover dados
+		\item Controle: Componente do processador que comanda o datapath, memória e dispositivos de I/O, de acordo com as instruções de um programa
+		\item Memória: Área de armazenamento na qual os programas são mantidos enquanto estão rodando. Contém: INSTRUÇÕES + DADOS
+	\end{itemize}
+	
+	Um detalhe é que a nossa CPU (processador) é igual ao Controle + Datapath
+	
+	\subsection{Os monitores LCD do computador}
+	
+	\subsubsection{Funcionamento}
+	
+	Os monitores do computador são LCD (display de cristal liquido). O monitor é dividido em várias camadas. Veja abaixo:
+	
+	\begin{center}
+		
+		\includegraphics[width=12cm,height=10cm,keepaspectratio=false]{imagens-teoria/monitor.png}
+		
+	\end{center}
+	
+	Nós temos: o plastico (case), o painel de luz, o filtro polarizador (permite a passagem de luz branca em apenas uma direção), placa de cristal liquido (serve para mudar a angulação do raio de luz que ele recebe para passar no segundo polarizador), placa de cor (onde temos 3 transistors para cada pixel, cada um com 8 bits (RGB) e um segundo filtro polarizador
+	
+	O funcionamento acontece da seguinte forma: 
+	
+	\begin{enumerate}
+		\item Imagine que a luz branca vinda do backlight (a lanterna da tela) está vibrando em todas as direções (horizontal, vertical, diagonal).
+		\begin{itemize}
+			\item O primeiro filtro polarizador (o de entrada) é colocado logo após o backlight.
+			\item Ele só permite que a luz que vibra em uma única direção (por exemplo, vertical) passe.
+			\item Toda a outra luz (que vibra nas outras direções) é bloqueada.
+		\end{itemize}
+		A luz que passa está agora polarizada (alinhada).
+		
+		\item A luz polarizada (vertical) entra na camada de cristais líquidos.
+		\begin{itemize}
+			\item Quando o pixel está desligado (sem eletricidade), os cristais torcem a luz em 90 graus (de vertical para horizontal, por exemplo).
+		\end{itemize}
+		
+		
+		
+	\end{enumerate}
+	
+	A luz branca passa por uma camada de material especial: os cristais líquidos. Essas moléculas têm uma propriedade mágica: quando a eletricidade é aplicada a elas, elas se alinham ou torcem. Esse alinhamento é o que funciona como o "portão", pois com eletricidade, o cristal se torce e bloqueia a passagem da luz, criando o ponto preto na tela e sem eletricidade, o cristal se alinha de forma que a luz passa, criando o ponto branco.
+	
+	
+	\subsubsection{Curiosidade}
+	
+	Uma curiosidade é que toda imagem que vemos em nossa tela é montada na memória em uma parte da memória chamada de Frame buffer, que armazena temporariamente os dados completos da imagem (os valores de cor e transparência de cada pixel) que será exibida na tela.
+	
+	Veja o funcionamento de forma detalhada:
+	
+	\begin{enumerate}
+		\item Renderização (Criação dos Dados)
+		Esta é a etapa onde a GPU (Placa Gráfica) trabalha.
+		
+		\begin{itemize}
+			\item O software (jogo, navegador, etc.) envia os comandos para a GPU desenhar objetos 3D ou 2D.
+			
+			\item A GPU realiza os cálculos de geometria, aplica texturas, sombreamento e iluminação (processo conhecido como pipeline gráfico).
+			\item O resultado final desse cálculo é a cor exata que cada pixel da tela deverá receber e exibir na tela.
+			
+		\end{itemize}
+		A partir disso a informação de cor é transformada em uma sequência de bits. para cada pixel da nossa tela
+		
+		\begin{itemize}
+			\item Lembrando que  a cor de um pixel é representada por 24 bits. Oito bits representam a intensidade do vermelho (R), oito a do verde (G) e oito a do azul (B) (RGB).
+			\item Essa sequencia de bits é o que define a cor final. Por exemplo, a cor pura Vermelha pode ser representada por 11111111 00000000 00000000 (255 de Vermelho, 0 de Verde, 0 de Azul).
+		\end{itemize}
+		
+		\item Armazenamento no Frame Buffer e montagem na tela
+		\begin{itemize}
+			\item O frame buffer  irá pegar as sequências de bits de cada pixel e armazenar isso. Ele é o estoque final da imagem.
+			\item A partir disso, O Controlador de Vídeo (um componente de hardware) é quem lê o Frame Buffer, pegando as sequências de bits. Ele envia essa informação (pixel por pixel, linha por linha, numa cadência contínua chamada de taxa de refresh) para o monitor.
+		\end{itemize}
+		Algo interessante é que a taxa de refresh será quantas vezes o computado consegue recriar a imagem na tela por segundo. Sãs os Hz do monitor (60Hz, 144Hz)
+	\end{enumerate}
+	
+	
+	\subsubsection{Os tipos de touchscreen}
+	
+	Nos monitores, nós temos diferentes tipos de touchscreen. São eles:
+	
+	\begin{itemize}
+		\item Resistivos: Precisam de pressão. São mais baratos e são muito utilizados em totens de pedidos ou de informações em shoppings, por exemplo
+		\item Capacitivo: São sensíveis à distorções do campo eletromagnético da tela. São mais caros e são utilizados em telas de smartphones, por exemplo.
+	\end{itemize}
+	
 	
 	
 \end{document}
