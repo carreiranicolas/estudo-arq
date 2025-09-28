@@ -276,7 +276,25 @@
 		\item Memória: Área de armazenamento na qual os programas são mantidos enquanto estão rodando. Contém: INSTRUÇÕES + DADOS
 	\end{itemize}
 	
-	Um detalhe é que a nossa CPU (processador) é igual ao Controle + Datapath
+	Um detalhe é que a nossa CPU (processador) é igual ao Controle + Datapath. O fluxo é:
+	
+	\begin{center}
+		
+		\includegraphics[width=12cm,height=1cm,keepaspectratio=false]{imagens-teoria/cpu.png}
+		
+	\end{center}
+	
+	obs: a cpu buscará a instrução já em binário
+	
+	\subsubsection{Aprofundando o datapath}
+	O datapath incluirá:
+	
+	\begin{itemize}
+		\item Unidade Lógica e Aritmética (ALU): É o coração do Datapath, responsável por executar todas as operações matemáticas (adição, subtração) e lógicas (E, OU, NÃO).
+		\item egistradores: Um pequeno conjunto de memórias de altíssima velocidade (ainda mais rápida que a L1 Cache) usadas para armazenar dados temporários, como os operandos (os números que estão sendo calculados) e resultados intermediários.
+		\item 
+		
+	\end{itemize}
 	
 	\subsection{Os monitores LCD do computador}
 	
@@ -357,6 +375,84 @@
 		\item Capacitivo: São sensíveis à distorções do campo eletromagnético da tela. São mais caros e são utilizados em telas de smartphones, por exemplo.
 	\end{itemize}
 	
+	
+	\subsection{A memória}
+	\subsubsection{Sobre}
+	A memória é uma hierarquia, onde temos:
+	
+	\begin{itemize}
+		\item Memória Primária (ou principal)
+		\begin{itemize}
+			\item Armazena programas (dados e instruções) enquanto estãoem execução. É memória VOLÁTIL.
+			\item DRAM, SRAM, ...
+		\end{itemize}
+		\item Memória secundária
+		\begin{itemize}
+			\item Memória NÃO VOLÁTIL usada para armazenamento de longo prazo (enquanto o computador está desligado).
+			\item HD, flash memory, CD-ROM, ...
+		\end{itemize}
+	\end{itemize}
+	
+	Sabendo disso, essa hierarquia se apresenta da seguinte forma para nós:
+	
+	\begin{center}
+		
+		\includegraphics[width=9cm,height=7cm,keepaspectratio=false]{imagens-teoria/hierarquia_memoria2.png}
+		
+		\includegraphics[width=9cm,height=7cm,keepaspectratio=false]{imagens-teoria/hierarquia_memoria3.png}
+	\end{center}
+	
+
+	
+	
+	
+	\subsubsection{Como funciona os transistors?}
+	Certo, falamos disso tudo, mas como os transistors irão funcionar por dentro? Veja primeiramente a imagem abaixo:
+	
+	\begin{center}
+		
+		\includegraphics[width=6cm,height=4cm,keepaspectratio=false]{imagens-teoria/transistor1.png}
+		
+	\end{center}
+	
+	
+	
+	Acima, nós temos a imagem de um transistor. Ele terá três pernas: A da esquerda, chamada de coletor, a do meio, chamada de base e a da direita, chamada de emissor
+	
+	O coletor é por onde a corrente elétrica entra. A energia elétrica não saíra pela base, ela saírá pelo emissor.
+	
+	Para fazer a energia elétrica sair, usamos o silício, que é um semicondutor onde podemos controlar sua condutividade por conta das impurezas jogadas nele. Dentro do transistor, teremos o silício negativamente carregado "N" e o positivamente carregado "P". Normalmente o silicio positivamente carregado fica no centro, na região onde fica o pino da base e o silicio negativamente carregado fica ao redor.
+	
+	
+	A base, poderá ficar positiva e negativa. Quando fica positiva, ela atrai as cargas negativas (elétrons) que estão nas regiões vizinhas do silício (os silicios tipo "N", que são negativamente carregados). Esses elétrons atraídos irão se acumular no silicio positivamente carregado (P) e fazer com que ele fique negativamente carregado (N), formando uma espécie de ponte, fazendo com que a eletricidade consiga fluir para o emisssor. Veja a imagem abaixo:
+	
+	\begin{center}
+		
+		\includegraphics[width=8cm,height=4cm,keepaspectratio=false]{imagens-teoria/transistor2.png}
+		
+	\end{center}
+	
+	
+	Para impedir novamente a passagem de eletricidade, colocamos a base do transistor como negativa, que irá repelir os elétrons e tornar o nosso silicio em positivamente carregado novamente, fazendo com que a ponte que se formou seja desformada, impedindo novamente a passagem de energia. 
+	
+	O computador normalmente tem por volta de 2,46GHz, o que siginifica que o transistor faz esse processo dentro dele por volta de 3 bilhoes de vezes por segundo.
+	
+	Uma curiosidade que a litografia é uma prática para tornar o tamanho da ponte (medida em nanometros) cada vez menor, pois quanto menor o tamanho dessa ponte, mais rápido ela forma e desforma (abre e fecha)
+	
+	\subsubsection{Como contruir processadores e memórias}
+	
+	\begin{center}
+		
+		\includegraphics[width=9cm,height=5cm,keepaspectratio=false]{imagens-teoria/construir_process.png}
+		
+	\end{center}
+	
+	\chapter{Sobre Perfomance dos Computadores}
+	
+	\section{Qual a definição?}
+	A definição de performance de um computador é um pouco dificil de ser medida, pois depende do ponto de vista que formos usar: projetista e usuario.
+	
+	Isso é complicado, pois nem sempre ambos os pontos de vista serão coincidadentes. O usuario não esta interessadp na ideia de performance do projetista da cpu.
 	
 	
 \end{document}
