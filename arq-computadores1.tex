@@ -185,7 +185,7 @@
 	
 	\begin{itemize}
 		\item Software aplicativo: Aquilo que fazemos (Hello World e etc)
-		\item Software de sistema: Operacional e compilador. Fornecem
+		\item Software de sistema: Operacional e compilador, onde o compilador tradiz do alto nível para a linguagem de máquina (veremos isso a seguir) e o sistema operacional fornece os serviços que serão necessários (entrada e saída, gerenciamento de memória e armazenamento, agendamento de tarefas e compartilhamento de recursos)
 	\end{itemize}
 	
 	\section{Alto nível para Linguagem de maquina}
@@ -221,7 +221,7 @@
 		
 	\end{center}
 	
-	Inclusive, uma observação que é importante de ser feita é que o arduino utiliza a arquitetura de Havard, sendo que existe a memória Flash no arduíno, que é a memória que armazena as instruções.
+	Inclusive, uma observação que é importante de ser feita é que o arduino utiliza a arquitetura de Havard, sendo que a memória das instruções é chamada de memória Flash ROM (contém 32KiB ), a memória que contém os dados é chamado de SRAM (contém 2KiB) e temos também uma memória que é tipo o disco rígido, chamada de EEPROM (contém 1KiB).
 	
 	\subsection{O programa e a maquina}
 	
@@ -295,6 +295,16 @@
 		\item 
 		
 	\end{itemize}
+	
+	Assim, o que acontece é que quando temos a instrução de somar X e Y, por exemplo, o que acontecerá será que o Controle irá buscar e pegar essa instrução, decodificar e guardar os valores na memória registradora. Esses valores serão jogados na ULA do nosso Datapath e irá realizar o calculo. Feito isso, o resultado sai da ULA e volta para o Datapath e joga nos registradores novamente.
+	
+	\subsection{Diferença ente microcontrolador e microprocessador}
+	
+	Microprocessador é aquilo que conhecemos. Ele precisa estar integrado à placa mâe e só faz operações logicas e aritmeticas (é o controle + datapath), por isso é rapido (4MHz). Tudo é exerno a ele.
+	
+	Nos microcontroladores, estamos falando de um minicomputador. Ele é tudo: controle + datapath, inputm output, ram, epprom...
+	
+	Uma curiosidade é que o microcontrolador do arduino UNO é chamado de ATMEGA328P-PU e sua arquitetura tem 8 bits.
 	
 	\subsection{Os monitores LCD do computador}
 	
