@@ -464,5 +464,40 @@
 	
 	Isso é complicado, pois nem sempre ambos os pontos de vista serão coincidadentes. O usuario não esta interessadp na ideia de performance do projetista da cpu.
 	
+	\chapter{Sobre os processadores}
+	
+	\section{Como funcionam?}
+	Para entender como os processadores funcionam, precisamos primeiro entender qual é a função deles. A função do processador é, a partir de instruções, mandar o hardware fazer algo (somar 2 +2, por exemplo).
+	
+	
+	Um exemplo que já falamos no incio desse documento e que nos ajudar a entender um pouco é quando temos nosso programa que faz a soma de dois números. Veja abaixo:
+	
+	
+	O código acima é a ação que mandamos a cpu executar em alto nivel. É a nossa sentença. O compilador transforma (a grosso modo) sentenças em instruções e as instruções, como sabemos, é o binário que a CPU entende e executa. 
+	
+	É importante ressaltar que a CPU SÓ ENTENDE BINÁRIO, sendo que cada arquitetura (86\_64, RISC-V, ARM) entende as instruções (binários) de uma maneira diferente para a mesma ação. Exemplo: A instrução (binario) soma é diferente para diferentes arquiteturas e, como ja vimos anteriormente, esse é o motivo pelo qual não pegamos um programa compilado no processador de arquitetura intel para roda no macbook (arquitetura ARM).
+	
+	\section{Aprofundando}
+	O conjunto das palavras (instruções) que cada processador usa é chamado de ISA, portanto, no fim das contas, quem faz o meio campo entre o nosso programa (alto nivel) e a CPU é a ISA
+	
+	
+	
+	\section{Funcionamento da CPU}
+	
+	\subsection{Nome aos bois}
+	
+	Na CPU nós teremos os registradores de uso geral e os registradores especiais (além das outras coisas como memória RAM, mas para entender, nos importará essas). Dentre os registradores especiais nós temos:
+	
+	\begin{itemize}
+		\item R.I (registrador de instrução): Aponta para a instrução que está sendo executada
+		\item C.P: Aponta para a próxima instrução a ser executada 
+	\end{itemize}
+	
+	\subsection{Funcionamento de fato}
+	
+	Para entendermos o funcionamento, temos que ter em mente que na arquitetura Von Neumann (a arquitetura dos computadores modernos), memória e instruções ficam na mesma memória, com a mesma representação (binários)
+	
+	Entendido isso, quando nós temos um programa que faz a soma de dois números, nós teremos, na memória RAM os dados e também as intruções. Ao executar, o sistema operacional pega a pimeira instrução e leva ao C.P. e depois joga para R.I e C.P irá apontar para a próxima instrução. RI executa a instrução que estava lá para que C.P jogue a instrução que estava lá para apontar para a proxia. Iss
+	
 	
 \end{document}
