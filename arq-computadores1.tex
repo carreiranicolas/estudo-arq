@@ -497,7 +497,64 @@
 	
 	Para entendermos o funcionamento, temos que ter em mente que na arquitetura Von Neumann (a arquitetura dos computadores modernos), memória e instruções ficam na mesma memória, com a mesma representação (binários)
 	
-	Entendido isso, quando nós temos um programa que faz a soma de dois números, nós teremos, na memória RAM os dados e também as intruções. Ao executar, o sistema operacional pega a pimeira instrução e leva ao C.P. e depois joga para R.I e C.P irá apontar para a próxima instrução. RI executa a instrução que estava lá para que C.P jogue a instrução que estava lá para apontar para a proxia. Iss
+	Entendido isso, quando nós temos um programa que faz a soma de dois números, nós teremos, na memória RAM os dados e também as intruções. Ao executar, o sistema operacional pega a pimeira instrução e leva ao C.P. e depois joga para R.I e C.P irá apontar para a próxima instrução. RI executa a instrução que estava lá para que C.P jogue a instrução que estava lá para apontar para a proxima. Isso ocorre até o fim do programa.
+	
+	\subsection{Um detalhe}
+	
+	Certo, falamos anteriormente como funciona o funcionamento, mas algo que temos que falar é que a CPU não consegue ir na memória RAM e realizar a soma lá na memória. A CPU não atua diretamente na memória, ela carrega os dados da memória nos registradores, faz a conta e retorna o resultado na memória
+	
+	Um exemplo disso que vimos é no assembly, quando utilizamos o ADD, por exemplo. Nós teremos o operador e mais 3 coisas, sendo que a primeira coisa é o registrador de destino (depois de fazer a soma, o resultado será colocado no registrador de destino), o registrador fonte 1 e o registrador fonte 2, onde teremos o conteúdo que veio da memória para que nós fizessemos a soma. Com o resultado da soma no registrador de destino, esse resultado vai para a memória RAM
+	
+	
+	O operador que irá buscar o conteúdo da RAM e colocar nos registradores é chamado de LW (load word)
+	
+	Nas leituras de memória, ao utilizar o operador LW, temos o REB que é registrador que contem o ENDEREÇO BASE de uma variavel (o endereço base é onde aquilo começa na memória), depois temos o OFFSET, que é o deslocamento necessário para alcançar o dado desejado e depois o RD, que é o registrador de destino, onde iremos guardar o dado desejado.
+	
+	\subsubsection{Exemplo}
+	Para entender melhor, vamos a um exemplo: Suponhamos que na memória nós tenhamos um array={1,101,10,100}. Se quisermos carregar o elemento A[2] (10) no registrador x3, fazemos:
+	
+	\begin{center}
+		\begin{LARGE}
+			LW x3 2 64
+		\end{LARGE}
+	\end{center}
+	
+	Olhando acima, da direita para a esquerda, nós temos o endereço base desse array (o endereço base será o compilador que irá definir. Quando o compilador gera as instruções, ele coloca o endereço base em algum registrador e forma isso no assembly), depois temos o deslocamento onde para chegar no elemento 10, nós andamos 2 (do 64 ao 66), e por fim o registrador de destino.
+	
+	Sendo assim, estamos dizendo: Carregue o dado no registrador x3 a partir do endereço base 64 com deslocamento 2.
+	
+	Um detalhe é que o exemplo acima que acabamos de explicar é um exemplo simplificado que não corresponde a realidade exatamente, pois cada célula é 1byte (8 bits) e um inteiro não coupa 1 célula, ocupa 4. Portanto, explicando de uma maneira mais fideldigna:
+	
+	\subsubsection{Big endian e Little endian}
+	
+	Algo que temos que falar, apesar de não ser tão importante é sobre o Big endian e o Little endian. Esses termos significam como armazenamos dados que precisam de mais de uma célula de memóra. Vamos definir cada um deles:
+	
+	\begin{itemize}
+		\item Big endian:Byte mais significativo no menor endereço 
+		\item Little endian: Byte mais significativo no maior endereço de memória (Byte menos significativo no mmenor endereço de memória)
+	\end{itemize}
+	
+	É importante falarmos desse assunto porque ao usar a memória EPROM, precisamos saber disso. O arduino é little endian (a intel também)
+	
+	\subsubsection{Falando do envio dos dados}
+	
+	Já falamos do uso do LW para enviar da memoria para os registradores. Agora, temos o caminho contrário. Para isso, utilizamos o operador SW, onde temos o REB que como já vimos é o registrador que contem o ENDEREÇO BASE de uma variavel, o OFFSET 
+	
+	
+	\subsection{O baixissimo nivel}
+	
+	Aprendemos como o compilador sai do alto nível e chega no assembly. Agora, temos que saber como sai do assembly para o binário
+	
+	Para isso, temos que saber que cada linha do assembly é uma instrução (uma linha de binário). Cada operação tem seu próprio formato. Exemplo:
+	
+	y = x + z. O assembly disso é: ADD x5 x4 x3. O binario disso será:
+	
+	
+	
+	De trás para frente, nós temos o OPCODE (reserva os 7 bits do final)  do operador ADD, que é 51 em binário
+	
+	
+	Um detalhe é que todos os operadores terão seu próprio OPCODE, F3 e FUN7, que definirão qual operador será ele
 	
 	
 \end{document}
