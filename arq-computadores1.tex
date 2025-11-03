@@ -481,6 +481,13 @@
 	O conjunto das palavras (instruções) que cada processador usa é chamado de ISA, portanto, no fim das contas, quem faz o meio campo entre o nosso programa (alto nivel) e a CPU é a ISA
 	
 	
+		
+	\begin{center}
+		\begin{LARGE}
+			FALTA AQUI (caderno verde) (a parte de arquiteturas e microarquiteturas de processadores e classificação delas e o começo de como estruturar as instruções da riscv)
+		\end{LARGE}
+	\end{center}
+	
 	
 	\section{Funcionamento da CPU}
 	
@@ -498,6 +505,13 @@
 	Para entendermos o funcionamento, temos que ter em mente que na arquitetura Von Neumann (a arquitetura dos computadores modernos), memória e instruções ficam na mesma memória, com a mesma representação (binários)
 	
 	Entendido isso, quando nós temos um programa que faz a soma de dois números, nós teremos, na memória RAM os dados e também as intruções. Ao executar, o sistema operacional pega a pimeira instrução e leva ao C.P. e depois joga para R.I e C.P irá apontar para a próxima instrução. RI executa a instrução que estava lá para que C.P jogue a instrução que estava lá para apontar para a proxima. Isso ocorre até o fim do programa.
+	
+			
+	\begin{center}
+		\begin{LARGE}
+			FALTA AQUI (caderno verde) (Finalizar melhor essa parte com um detalhe de informação que tem no final sobre registradores da riscv)
+		\end{LARGE}
+	\end{center}
 	
 	\subsection{Um detalhe}
 	
@@ -525,6 +539,12 @@
 	
 	Um detalhe é que o exemplo acima que acabamos de explicar é um exemplo simplificado que não corresponde a realidade exatamente, pois cada célula é 1byte (8 bits) e um inteiro não coupa 1 célula, ocupa 4. Portanto, explicando de uma maneira mais fideldigna:
 	
+	\begin{center}
+		\begin{LARGE}
+			FALTA AQUI (caderno verde) (Explicar a maneira fideldigna)
+		\end{LARGE}
+	\end{center}
+	
 	\subsubsection{Big endian e Little endian}
 	
 	Algo que temos que falar, apesar de não ser tão importante é sobre o Big endian e o Little endian. Esses termos significam como armazenamos dados que precisam de mais de uma célula de memóra. Vamos definir cada um deles:
@@ -540,14 +560,29 @@
 	
 	Já falamos do uso do LW para enviar da memoria para os registradores. Agora, temos o caminho contrário. Para isso, utilizamos o operador SW, onde temos o REB que como já vimos é o registrador que contem o ENDEREÇO BASE de uma variavel, o OFFSET 
 	
+			
+	\begin{center}
+		\begin{LARGE}
+			FALTA AQUI (caderno verde) (Faltou completar a parte de envio de dados; mostrar um exemplo de programa assembly baseado em um programa de alto nivel; Uso do operrador ADDI; Explicar o uso do registrador x0 no riscv na memória)
+		\end{LARGE}
+	\end{center}
+	
 	
 	\subsection{O baixissimo nivel}
 	
 	Aprendemos como o compilador sai do alto nível e chega no assembly. Agora, temos que saber como sai do assembly para o binário
 	
-	Para isso, temos que saber que cada linha do assembly é uma instrução (uma linha de binário). Cada operação tem seu próprio formato. Exemplo:
+	Para isso, temos que saber que cada linha do assembly é uma instrução (uma linha de binário). Cada operação tem seu próprio formato, podendo ser:
 	
-	y = x + z. O assembly disso é: ADD x5 x4 x3. O binario disso será:
+	\begin{itemize}
+		\item Formato-R: Operações de aritmetica. Somos obrigados a informar a operação, operador de destino e operadores fonte 1 e 2.
+		\item Formato-S:
+		\item Formato-I: Usado quando trabalhamos com constantes
+	\end{itemize} 
+	
+	Um Exemplo:
+	
+	y = x + z. O assembly disso é: ADD x5 x4 x3. O binario disso (que sabemos que é baseado no formato R) será :
 	
 	
 	
@@ -555,6 +590,32 @@
 	
 	
 	Um detalhe é que todos os operadores terão seu próprio OPCODE, F3 e FUN7, que definirão qual operador será ele
+	
+	Certo, agora vamos ver um exemplo de assembly quando trabalhamos com constantes: ADDI x22 x23 - 13. Isso em binário fica:
+	
+	
+	Uma observação é que a instrução LW para carregar dados, é baseado no Formato-I. Isso acontece porque o OFFSET é uma constante
+	
+			
+	\begin{center}
+		\begin{LARGE}
+			FALTA AQUI (caderno preto) (Falta todo o restante, como: detalhes em c, binario da operação sw e etc)
+		\end{LARGE}
+	\end{center}
+	
+	\chapter{Arquitetura de memória}
+	
+	\section{A importancia}
+	
+	Os programadores raizes sabem gerenciar a memoria (não causar underflow, overflow, sabem usar alocação dinamica, não causam buffer (é uma falha no gerenciamento de memoria e as linguagens mais novas abstraem isso de nós))
+	
+	\section{Detalhando a o processo de compilação de um programa}
+	
+	Suponhamos que temos um programa de Hello World em C:
+	
+	\begin{itemize}
+		\item Ola.c: 
+	\end{itemize}
 	
 	
 \end{document}
