@@ -480,7 +480,14 @@
 	\section{Aprofundando}
 	O conjunto das palavras (instruções) que cada processador usa é chamado de ISA, portanto, no fim das contas, quem faz o meio campo entre o nosso programa (alto nivel) e a CPU é a ISA
 	
+	Falando um pouco sobre arquiteturas agora, nós temos, por exemplo, a arquitetura x86\_64. A arquitetura de um processador é um modelo teórico de como um processador deve funcionar. São as instruções suportadas, os tipos de dados suportados e etc 
 	
+	
+	Uma mesma arquitetura, pode ter diferentes implementações, que são conhecidas como MICROARQUITETURAS. Exemplo: Nós temos a arquitetura x86\_64, que tem a implementação da Intel (Core i5) e da AMD (Rizen 5)
+	
+	Essas microarquiteturas são basicamente como o circuito é feito de modo a funcionar com o modelo teórico x86\_64. As MICROARQUITETURAS (não confunda com a arquitetura) são segredo comercial, pois a Intel e AMD se matam para construir processadores mais baratos e melhores
+	
+	As arquiteturas podem ser classificadas
 		
 	\begin{center}
 		\begin{LARGE}
@@ -614,7 +621,7 @@
 	Suponhamos que temos um programa de Hello World em C:
 	
 	\begin{itemize}
-		\item Ola.c: 
+		\item Ola.c: Texto código fonte. Iremos fazer gcc -E -o ola.i ola.c e o código irá passar por um pré processamento feito pelo software
 	\end{itemize}
 	
 	
