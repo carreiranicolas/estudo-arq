@@ -102,7 +102,64 @@
 	Dessa forma, podemos resumir cluster em: computadores separados que trabalham como um só. \\
 	
 	
-	Em cluster, você deve programar usando tecnicas de programação paralela, você deve mandar seu programa para todos os clusters
+	Um exemplo clássico da aplicação de cluster é o cálculo de $\pi$, onde temos que dividir a carga de trabalho para diferentes computadores para chegar no valor. \\
+	
+	Existem alguns exemplos de clusters bem famosos. São os supercomputadores. Aqui no Brasil nós temos o Santos Dumont, que é composto por 246 nós, ou seja, 246 computadores. \\
 	
 	
+	Podemos ter duas categorias de clusters:
+	
+	\begin{itemize}
+		\item HPC: Feito para alta performance
+		
+		\item HAC: Não foi feito para ter um alto poder de processamento, mas sim para não parar. É bastante usado por empresas de cartão de crédito, militares e etc. Dentro dos HAC temos duas categorias:
+		
+		\begin{itemize}
+			\item Failover: Quando um dos computadores dá defeito, outro computador assume.
+			\item Fail Back: Quando um computador da defeito, nós consertamos, colocamos de volta e o computador que tinha dado defeito assume de onde parou.
+		\end{itemize}
+	\end{itemize}
+	
+	Algo que é importante de se pontuar é que é necessário uma área de storage para o cluster continuar a operação que um continuar a operação que um cluster estava fazendo quando deu defeito. Existem três formas de implementar isso:
+	
+	\begin{center}
+		\item PAS
+		\item NAS
+		\item SAN
+	\end{center}
+	
+	
+	Em cluster, você deve programar usando tecnicas de programação paralela, você deve mandar seu programa para todos os clusters. O dificil disso é dividir qual tarefa vai para cada cluster
+	
+	\section{Computação em Nuvem e Multithread}
+	
+	\subsection{Computação em nuvem}
+	
+	A computação em nuvem é basicamente usar o servidor de outra pessoa. Criar um servidor por si próprio custa uma grana e precisa de alguém para dar manutenção
+	
+	Quando usamos a computação em nuvem o que fazemos é alugar uma maquina virtual em um grande cluster. Veja como ocorre isso na computação em nuvem por meio da imagem a seguir:
+	
+	
+	A computação em nuvem tem alguns mantras, sendo eles:
+	
+	\begin{itemize}
+		\item Serviço mensurado
+		\item Auto serviço sob demanda
+		\item 
+	\end{itemize}
+	
+	
+	Os tipos de nuvem que temos são:
+	
+	\begin{itemize}
+		\item Nuvem pública: Disponivel publicamente para você usar
+		\item Nuvem privada: Nuvem que empresas criam para elas por conta de uma politica de sigilo de dados
+		\item Nuvem comunitária: Mistura da pública e privada. Toda on que participou da criação pode usar, sendo que cada ong tem sua nuvem privada 
+	\end{itemize}
+	
+	\subsection{Threading e Multithreading}
+	
+	A prática de Threading permite a melhora do desempenho
+	
+		
 \end{document}
